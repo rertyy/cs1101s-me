@@ -21,7 +21,7 @@ function check_brackets(lst) {
     while (true) {
         // display(list_ref(lst, i));
         if (list_ref(lst, i) === 0) {
-            open_bracket = open_bracket + 1;
+            open_bracket = open_bracket + s1;
         } else if (list_ref(lst, i) === 1) {
             open_bracket = open_bracket - 1;
         }
