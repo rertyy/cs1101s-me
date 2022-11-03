@@ -212,7 +212,7 @@ encapsulate([["Hello", 0], ["World", 1]])("");
 /*******************************************************************************/
 
 function inherit(fobj, proto) {
-    return encapsulate(fobj);
+    return x=> is_undefined(fobj(x)) ? fobj(x) : proto(x);
 }
 
 let proto = encapsulate([[0, "Hello"], [1, "World"]]);
