@@ -203,7 +203,7 @@ function encapsulate(map) {
 
 
 encapsulate([[0, "Hello"], [1, "World"]])(1); // "World"
-encapsulate([["Hello", 0], ["World", 1]])("World");
+encapsulate([["Hello", 0], ["World", 1]])("");
 
 
 
@@ -211,8 +211,13 @@ encapsulate([["Hello", 0], ["World", 1]])("World");
                                 /* Q3.5 */
 /*******************************************************************************/
 
+function inherit(fobj, proto) {
+    return encapsulate(fobj) || encapsulate(proto);
+}
 
-
+let proto = encapsulate([[0, "Hello"], [1, "World"]]);
+let obj = encapsulate([[1, "Dlrow"]]);
+inherit(obj, proto)(1);
 
 
 
