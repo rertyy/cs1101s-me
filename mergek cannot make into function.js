@@ -31,7 +31,7 @@ function merge_two_arrays(arr1, arr2, arr3) {
 // as an argument and all arrays are assumed
 // to be sorted. It merges them together
 // and prints the final sorted output.
-function merge_k_arrays(arr, i, j, output) {
+function merge_k_sorted_arrays(arr, i, j, output) {
     // If one array is in range
     if (i === j) {
         for (let p = 0; p < array_length(arr[i]); p = p + 1) {
@@ -51,8 +51,8 @@ function merge_k_arrays(arr, i, j, output) {
     let out2 = [];
      
     // Divide the array into halves
-    merge_k_arrays(arr, i, math_floor((i + j) / 2), out1);
-    merge_k_arrays(arr, math_floor((i + j) / 2) + 1, j, out2);
+    merge_k_sorted_arrays(arr, i, math_floor((i + j) / 2), out1);
+    merge_k_sorted_arrays(arr, math_floor((i + j) / 2) + 1, j, out2);
      
     // Merge the output array
     merge_two_arrays(out1, out2, output);
@@ -60,7 +60,7 @@ function merge_k_arrays(arr, i, j, output) {
 
 function merge_k_helper(arr) {
     let output = [];
-    merge_k_arrays(arr, 0, array_length(arr) - 1, output);
+    merge_k_sorted_arrays(arr, 0, array_length(arr) - 1, output);
     
     return output;
 }
@@ -69,8 +69,5 @@ let arr = [ [ 2, 6, 12, 13, 15],
             [ 1, 9, 20, 1000 ],
             [ 23, 34, 90, 2000 ],
             [999] ];
-            // [1,2] ];
-
-
 
 merge_k_helper(arr);
