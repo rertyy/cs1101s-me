@@ -49,11 +49,9 @@ function merge_k_sorted_arrays(arr, i, j, output) {
     // Output arrays
     let out1 = [];
     let out2 = [];
-     
     // Divide the array into halves
     merge_k_sorted_arrays(arr, i, math_floor((i + j) / 2), out1);
     merge_k_sorted_arrays(arr, math_floor((i + j) / 2) + 1, j, out2);
-     
     // Merge the output array
     merge_two_arrays(out1, out2, output);
 }
