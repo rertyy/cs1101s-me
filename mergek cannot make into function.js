@@ -1,3 +1,4 @@
+//copied from https://www.geeksforgeeks.org/merge-k-sorted-arrays/
 function merge_two_arrays(arr1, arr2, arr3) {
     let i = 0;
     let j = 0;
