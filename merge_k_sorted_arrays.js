@@ -30,26 +30,23 @@ function merge_two_arrays(arr1, arr2) {
     return arr3;
 }
  
- 
-function merge_k_sorted_arrays(arr, i, j) {
-    if (i === j) { //if only 1 array, add to output
-        return arr[i];
+function merge_k_sorted_arrays(arr) { 
+    function merge_k_helper(arr, i, j) {
+        if (i === j) { //if only 1 array, add to output
+            return arr[i];
+            }
+        if (j - i === 1) { //if 2 arrays, merge them
+            return merge_two_arrays(arr[i], arr[j]);
         }
-    if (j - i === 1) { //if 2 arrays, merge them
-        return merge_two_arrays(arr[i], arr[j]);
+        const out1 = merge_k_helper(arr, i, math_floor((i + j) / 2)); //i and j are array numbers
+        const out2 = merge_k_helper(arr, math_floor((i + j) / 2) + 1, j);
+        return merge_two_arrays(out1, out2); // Merge the output array
     }
-    const out1 = merge_k_sorted_arrays(arr, i, math_floor((i + j) / 2)); //i and j are array numbers
-    const out2 = merge_k_sorted_arrays(arr, math_floor((i + j) / 2) + 1, j);
-    return merge_two_arrays(out1, out2); // Merge the output array
-}
 
-function merge_k_helper(arr) {
-    return merge_k_sorted_arrays(arr, 0, array_length(arr) - 1);
+    return merge_k_helper(arr, 0, array_length(arr) - 1);
 }
 
 //TEST
-let arr = [ [ 2, 6, 12, 13, 15],
-            [ 1, 9, 20, 1000 ],
-            [ 23, 34, 90, 2000 ],
-            [999] ];
-merge_k_helper(arr);
+// let arr = [ [ 2, 6, 12, 13, 15],
+//             [3, 999] ];
+// merge_k_sorted_arrays(arr);
