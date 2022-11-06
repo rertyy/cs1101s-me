@@ -30,8 +30,8 @@ function merge_k_helper(xs) {
 }
 
 //TEST
-let lstlst = list(
-                list(1,2,3,10),
-                list(4,5,11,55),
-                list(9,13));
-merge_k_helper(lstlst);
+// let lstlst = list(
+//                 list(1,2,3,10),
+//                 list(4,5,11,55),
+//                 list(9,13));
+// merge_k_helper(lstlst);
