@@ -1,3 +1,4 @@
+//Merge a matrix of k sorted arrays
 //copied from https://www.geeksforgeeks.org/merge-k-sorted-arrays/
 function merge_two_arrays(arr1, arr2, arr3) {
     let i = 0;
@@ -27,42 +28,31 @@ function merge_two_arrays(arr1, arr2, arr3) {
     }
 }
  
-// This function takes an array of arrays
-// as an argument and all arrays are assumed
-// to be sorted. It merges them together
-// and prints the final sorted output.
 function merge_k_sorted_arrays(arr, i, j, output) {
-    // If one array is in range
-    if (i === j) {
+    if (i === j) { //if only 1 array, add to output
         for (let p = 0; p < array_length(arr[i]); p = p + 1) {
             output[p] = arr[i][p];
         }
-        return true;
+        return true; //to end function
     }
-    // If only two arrays are left
-    // them merge them
-    if (j - i === 1) {
+    if (j - i === 1) { //if 2 arrays, merge them
         merge_two_arrays(arr[i], arr[j], output);
-        return true;
+        return true; //to end function
     }
-     
-    // Output arrays
-    let out1 = [];
+    let out1 = []; //temp arrays to wishful thinking
     let out2 = [];
-    // Divide the array into halves
-    merge_k_sorted_arrays(arr, i, math_floor((i + j) / 2), out1);
+    merge_k_sorted_arrays(arr, i, math_floor((i + j) / 2), out1); //i and j are array numbers
     merge_k_sorted_arrays(arr, math_floor((i + j) / 2) + 1, j, out2);
-    // Merge the output array
-    merge_two_arrays(out1, out2, output);
+    merge_two_arrays(out1, out2, output); // Merge the output array
 }
 
 function merge_k_helper(arr) {
     let output = [];
     merge_k_sorted_arrays(arr, 0, array_length(arr) - 1, output);
-    
     return output;
 }
 
+//TEST
 let arr = [ [ 2, 6, 12, 13, 15],
             [ 1, 9, 20, 1000 ],
             [ 23, 34, 90, 2000 ],
