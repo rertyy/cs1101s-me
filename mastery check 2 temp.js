@@ -82,5 +82,5 @@ eval_stream(m_integers_from(10), 5);
 eval_stream(m_integers_from(10), 5);
 display("/*******/");
 eval_stream(m_integers, 4);
-eval_stream(m_integers, 5);
+eval_stream(m_integers, 8);
 
