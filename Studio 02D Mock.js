@@ -86,12 +86,46 @@ function peak(xs) {
 }
 
 // const xs = [1, 3, 6, 4, 2]; //, then peak(xs) returns 6
-const xs = [1, 2, 4, 6, 9]; //, then peak(xs) returns 9
+// const xs = [1, 2, 4, 6, 9]; //, then peak(xs) returns 9
 // const xs = [5, 4, 3, 2, 1]; //, then peak(xs) returns 5
-peak(xs);
+// peak(xs);
 
 
 
 /****************************************************************************/
 /****************************************************************************/
 /****************************************************************************/
+
+function add(s1, s2) {
+    function add_single(x, carry) {
+        if (is_null(x)) {
+            return null;
+        }
+        const sum = head(x) + carry;
+        const new_digit = sum % 10;
+        const new_carry = (sum - new_digit) / 10;
+        return pair(new_digit, () => add_single(stream_tail(x), new_carry));
+    }
+    
+    function add_helper(x, y, carry) {
+        if (is_null(x) && is_null(y)) {
+            return (carry === 0) ? null : pair(carry, null);
+        } else {
+            const xdigit = (is_null(x)) ? 0 : head(x);
+            const ydigit = (is_null(y)) ? 0 : head(y);
+            const sum = xdigit + ydigit + carry;
+            const new_digit = sum % 10;
+            const new_carry = (sum - new_digit) / 10;
+            return pair(new_digit,
+                        () => add_helper((is_null(x)) ? x : stream_tail(x),
+                            (is_null(y)) ? y : stream_tail(y), new_carry));
+        }
+    }
+    return add_helper(s1, s2, 0);
+}
+
+const a = add(stream(9, 1), stream(9, 9));
+stream_ref(a, 3);
+
+
+
