@@ -190,3 +190,30 @@ source_reshape(matrix, 6, 1);
 /****************************************************************************/
 
 
+
+
+
+
+function get_next_state(current) {
+    const rows = array_length(current);
+    const cols = array_length(current[0]);
+    
+    function neighbour_checker(i, j) {
+        if (i < 0 || i >= rows || j < 0 || j >= cols) {
+            return 0;
+        }
+    }
+}
+
+
+const current_state = [[1,1,0],
+                       [0,1,1],
+                       [1,0,0]];
+                       
+// get_next_state(current_state);
+
+
+
+
+
+
