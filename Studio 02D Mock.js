@@ -109,13 +109,14 @@ function add(s1, s2) {
     
     function add_helper(x, y, carry) {
         if (is_null(x) && is_null(y)) {
-            return (carry === 0) ? null : pair(carry, null);
+            return (carry === 0) ? null : pair(carry, () => null);
         } else {
             const xdigit = (is_null(x)) ? 0 : head(x);
             const ydigit = (is_null(y)) ? 0 : head(y);
             const sum = xdigit + ydigit + carry;
             const new_digit = sum % 10;
             const new_carry = (sum - new_digit) / 10;
+            
             return pair(new_digit,
                         () => add_helper((is_null(x)) ? x : stream_tail(x),
                             (is_null(y)) ? y : stream_tail(y), new_carry));
@@ -124,8 +125,8 @@ function add(s1, s2) {
     return add_helper(s1, s2, 0);
 }
 
-const a = add(stream(9, 1), stream(9, 9));
-stream_ref(a, 3);
-
+const a = add(stream(9, 9), stream(9, 9));
+eval_stream(a, 3);
+// stream_ref(a, 3);
 
 
