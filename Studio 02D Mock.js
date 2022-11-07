@@ -166,9 +166,6 @@ function source_reshape(matrix, r, c) {
     let n = 0;
     while (i < r) {
         while (j < c) {
-            // display(flat_matrix[k]);
-            // display(j,"i");
-
             ret[i][j] = matrix[m][n];
             display(ret);
             if (n + 1 === cols) {
@@ -177,7 +174,6 @@ function source_reshape(matrix, r, c) {
             } else {
                 n = n + 1;
             } 
-            
             j = j + 1;
         }
         j = 0;
@@ -188,4 +184,4 @@ function source_reshape(matrix, r, c) {
 }
 
 const matrix = [[1,3,6],[2,4,8]];
-source_reshape(matrix, 1, 6);
+source_reshape(matrix, 6, 1);
