@@ -178,5 +178,5 @@ function source_reshape(matrix, r, c) {
     return ret;
 }
 
-const matrix = [[1,3],[2,4]];
-source_reshape(matrix, 1, 4);
+const matrix = [[1,3,6],[2,4,8]];
+source_reshape(matrix, 3, 2);
