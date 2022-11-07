@@ -147,15 +147,36 @@ function source_reshape(matrix, r, c) {
         ret[i] = [];
     }
     
+    let flat_matrix = [];
+    let counter = 0;
+    const rows = array_length(matrix);
+    const cols = array_length(matrix[0]);
+    for (let i = 0; i < rows; i = i + 1) {
+        for (let j = 0; j < cols; j = j + 1) {
+            flat_matrix[counter] = matrix[i][j];
+            counter = counter + 1;
+        }
+    }
     
     
-    
-    
-    
-    
-    
-    
-    
+    let i = 0;
+    let j = 0;
+    let k = 0;
+    while (i < r) {
+        while (k < array_length(flat_matrix) && j < c) {
+            // display(flat_matrix[k]);
+            // display(j,"i");
+            ret[i][j] = flat_matrix[k];
+            display(ret);
+            k = k + 1;
+            j = j + 1;
+        }
+        j = 0;
+        i = i + 1;
+    }
+            
     return ret;
 }
 
+const matrix = [[1,3],[2,4]];
+source_reshape(matrix, 1, 4);
