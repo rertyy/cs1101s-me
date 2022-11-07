@@ -159,7 +159,6 @@ function source_reshape(matrix, r, c) {
         }
     }
     
-    
     let i = 0;
     let j = 0;
     let m = 0;
