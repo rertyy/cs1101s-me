@@ -78,6 +78,9 @@ function m_integers_from(n) {
                 m_integers_from(n + 1))));
 }
 const m_integers = m_integers_from(1);
-eval_stream(m_integers_from(2), 5);
-eval_stream(m_integers_from(2), 5);
+eval_stream(m_integers_from(10), 5);
+eval_stream(m_integers_from(10), 5);
+display("/*******/");
+eval_stream(m_integers, 4);
+eval_stream(m_integers, 5);
 
