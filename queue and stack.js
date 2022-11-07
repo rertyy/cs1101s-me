@@ -45,7 +45,7 @@ function enstack(x) {
         head = 0;
     } else {
         stack[head] = x;
-        head = head - 1 < 0 ? SIZE - 1 : head - 1;
+        head = head - 1 < 0 ? SIZE - 1 : head - 1; //you can also tail = (tail+1) % size;
         tail = tail - 1 < 0 ? SIZE - 1 : tail - 1;
     }
 }
