@@ -147,6 +147,7 @@ function source_reshape(matrix, r, c) {
         ret[i] = [];
     }
     
+    //flat matrix is easier to use by appending whole matrix into flat_mat
     let flat_matrix = [];
     let counter = 0;
     const rows = array_length(matrix);
