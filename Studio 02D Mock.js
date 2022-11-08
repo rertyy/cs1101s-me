@@ -142,22 +142,23 @@ function add(s1, s2) {
 /****************************************************************************/
 
 function source_reshape(matrix, r, c) {
+    const rows = array_length(matrix);
+    const cols = array_length(matrix[0]);
     const ret = [];
     for (let i = 0; i < r; i = i + 1) {
         ret[i] = [];
     }
     
     //flat matrix is easier to use by appending whole matrix into flat_mat
-    let flat_matrix = [];
-    let counter = 0;
-    const rows = array_length(matrix);
-    const cols = array_length(matrix[0]);
-    for (let i = 0; i < rows; i = i + 1) {
-        for (let j = 0; j < cols; j = j + 1) {
-            flat_matrix[counter] = matrix[i][j];
-            counter = counter + 1;
-        }
-    }
+    // let flat_matrix = [];
+    // let counter = 0;
+
+    // for (let i = 0; i < rows; i = i + 1) {
+    //     for (let j = 0; j < cols; j = j + 1) {
+    //         flat_matrix[counter] = matrix[i][j];
+    //         counter = counter + 1;
+    //     }
+    // }
     
     let i = 0;
     let j = 0;
