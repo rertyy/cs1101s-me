@@ -192,13 +192,11 @@ function source_reshape(matrix, r, c) {
 
 
 
-
-
 function get_next_state(current) {
     const rows = array_length(current);
     const cols = array_length(current[0]);
     
-    const temp = []; //arr that stores next state
+    const temp = []; //arr that stores state of neighbours
     for (let i = 0; i < rows; i = i + 1) {
         temp[i] = [];
     }
@@ -206,8 +204,45 @@ function get_next_state(current) {
     function neighbour_checker(i, j) {
         if (i < 0 || i >= rows || j < 0 || j >= cols) {
             return 0;
+        } else {
+            return current[i][j];
         }
     }
+    
+    for (let i = 0; i < rows; i = i + 1) {
+        for (let j = 0; j < cols; j = j + 1) {
+            temp[i][j] = 
+                neighbour_checker(i-1, j-1) + //bottom left
+                neighbour_checker(i,   j-1) + //bottom
+                neighbour_checker(i+1, j-1) + //top right
+                neighbour_checker(i-1, j  ) + //left
+                // neighbour_checker(i  , j  ) + //centre
+                neighbour_checker(i+1, j  ) + //bottom left
+                neighbour_checker(i-1,   j+1) +
+                neighbour_checker(i,   j+1) +
+                neighbour_checker(i+1,   j+1);
+                
+        }
+    }
+    
+    display(temp);
+    
+    //map no. neighbours back to next_state
+    for (let i = 0; i < rows; i = i + 1) {
+        for (let j = 0; j < cols; j = j + 1) {
+            if (current[i][j] === 1) {
+                temp[i][j] = temp[i][j] < 2 //underpop
+                            ? 0
+                            : temp[i][j] === 2 || temp[i][j] === 3
+                            ? 1
+                            : temp[i][j] > 3;
+            } else if (current[i][j] === 0 && temp[i][j] === 3) {
+                temp[i][j] = 1;
+            }
+        }
+    }
+    
+    return temp;
 }
 
 
@@ -215,7 +250,7 @@ const current_state = [[1,1,0],
                        [0,1,1],
                        [1,0,0]];
                        
-// get_next_state(current_state);
+get_next_state(current_state);
 
 
 
