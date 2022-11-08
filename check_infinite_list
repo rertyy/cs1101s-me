@@ -1,0 +1,28 @@
+
+
+function check_infinite(x) {
+    let flag = false;
+    function count_pairs_helper(x, mem) {
+    if (!is_null(member(x, mem))) {
+        flag = true;
+        return 0;
+    } else if (!is_pair(x)) {
+        return 0;
+    } else {
+        return 1
+        + count_pairs_helper(head(x), pair(x, mem))
+        + count_pairs_helper(tail(x), pair(x, mem));
+        }
+    }
+
+    count_pairs_helper(x, null);
+    
+    return flag;
+}
+
+let p2 = pair(2, null);
+let p1 = pair(1, p2);
+set_tail(p2, p1);
+display(check_infinite(p1));
+let p5 = pair(1, null);
+check_infinite(p5);
