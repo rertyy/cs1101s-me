@@ -149,7 +149,7 @@ const factorialPlusFibo = combineSequences1(
 		list(factorial, fibo),
 		(f, g) => (x => (f(x) + g(x)))
 );
-// factorialPlusFibo(5);
+factorialPlusFibo(5);
 
 // // mulSeq = padovan(n) * fibo(n) * fact(n)
 // const mulSeq = combineSequences(
@@ -159,9 +159,9 @@ const factorialPlusFibo = combineSequences1(
 // mulSeq(5); // Returns 1800
 
 // compose = fibo(padovan(n))
-const compose = combineSequences(
+const compose = combineSequences1(
 		list(fibo, padovan),
-		(f, g) => x => f(g(x))
+		(f, g) => x => g(f(x))
 );
 // compose(13); // Returns 317811
 
