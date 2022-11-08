@@ -49,11 +49,10 @@ function naive_pascal(row) {
     for (let r = 1; r <= row; r = r + 1) {
         const next = [];
         next[0] = 1;
-        for (let i = 1; i < r; i = i + 1){
+        for (let i = 1; i < r; i = i + 1) {
             next[i] = previous[i-1] + previous[i];
         }
         next[r] = 1;
-        display(previous);
         previous = next;
     }
     return previous;
@@ -68,3 +67,31 @@ function array_to_list(A) {
     }
     return L;
 }
+
+
+function print_pascal(row) {
+    if (row === 0) {
+        return [[1]];
+    }
+    
+    const M = [[1]];
+    
+    let i = 0;
+
+    let previous = [1];
+    for (let r = 1; r <= row; r = r + 1) {
+        const next = [];
+        next[0] = 1;
+        for (let i = 1; i < r; i = i + 1) {
+            next[i] = previous[i-1] + previous[i];
+        }
+        next[r] = 1;
+        M[i] = previous;
+        i = i + 1;
+        previous = next;
+    }
+    return M;
+}
+
+
+print_pascal(10);
