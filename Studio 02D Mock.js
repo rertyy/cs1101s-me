@@ -182,8 +182,8 @@ function source_reshape(matrix, r, c) {
     return ret;
 }
 
-const matrix = [[1,3,6],[2,4,8]];
-source_reshape(matrix, 6, 1);
+// const matrix = [[1,3,6],[2,4,8]];
+// source_reshape(matrix, 6, 1);
 
 /****************************************************************************/
 /****************************************************************************/
@@ -197,6 +197,11 @@ source_reshape(matrix, 6, 1);
 function get_next_state(current) {
     const rows = array_length(current);
     const cols = array_length(current[0]);
+    
+    const temp = []; //arr that stores next state
+    for (let i = 0; i < rows; i = i + 1) {
+        temp[i] = [];
+    }
     
     function neighbour_checker(i, j) {
         if (i < 0 || i >= rows || j < 0 || j >= cols) {
