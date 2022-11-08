@@ -211,22 +211,30 @@ function get_next_state(current) {
     
     for (let i = 0; i < rows; i = i + 1) {
         for (let j = 0; j < cols; j = j + 1) {
-            temp[i][j] = 
-                neighbour_checker(i-1, j-1) + //bottom left
-                neighbour_checker(i,   j-1) + //bottom
-                neighbour_checker(i+1, j-1) + //top right
-                neighbour_checker(i-1, j  ) + //left
-                // neighbour_checker(i  , j  ) + //centre
-                neighbour_checker(i+1, j  ) + //bottom left
-                neighbour_checker(i-1, j+1) +
-                neighbour_checker(i,   j+1) +
-                neighbour_checker(i+1, j+1);
+            let sum = 0;
+            for (let y = -1; y <= 1; y = y + 1) {
+                for (let x = -1; x <= 1; x = x + 1) {
+                    sum = sum + neighbour_checker(i + y, j + x);
+                }
+            }
+            temp[i][j] = sum;
+            
+            
+            // temp[i][j] = 
+            //     neighbour_checker(i-1, j-1) + //bottom left
+            //     neighbour_checker(i,   j-1) + //bottom
+            //     neighbour_checker(i+1, j-1) + //top right
+            //     neighbour_checker(i-1, j  ) + //left
+            //     // neighbour_checker(i  , j  ) + //centre
+            //     neighbour_checker(i+1, j  ) + //bottom left
+            //     neighbour_checker(i-1, j+1) +
+            //     neighbour_checker(i,   j+1) +
+            //     neighbour_checker(i+1, j+1);
                 
         }
     }
     
     display(temp);
-    display(current);
     
     //map no. neighbours back to next_state
     for (let i = 0; i < rows; i = i + 1) {
