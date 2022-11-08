@@ -75,9 +75,7 @@ function print_pascal(row) {
     }
     
     const M = [[1]];
-    
     let i = 0;
-
     let previous = [1];
     for (let r = 1; r <= row; r = r + 1) {
         const next = [];
