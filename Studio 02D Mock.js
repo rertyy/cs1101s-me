@@ -218,31 +218,32 @@ function get_next_state(current) {
                 neighbour_checker(i-1, j  ) + //left
                 // neighbour_checker(i  , j  ) + //centre
                 neighbour_checker(i+1, j  ) + //bottom left
-                neighbour_checker(i-1,   j+1) +
+                neighbour_checker(i-1, j+1) +
                 neighbour_checker(i,   j+1) +
-                neighbour_checker(i+1,   j+1);
+                neighbour_checker(i+1, j+1);
                 
         }
     }
     
     display(temp);
+    display(current);
     
     //map no. neighbours back to next_state
     for (let i = 0; i < rows; i = i + 1) {
         for (let j = 0; j < cols; j = j + 1) {
             if (current[i][j] === 1) {
-                temp[i][j] = temp[i][j] < 2 //underpop
+                current[i][j] = temp[i][j] < 2 //underpop
                             ? 0
                             : temp[i][j] === 2 || temp[i][j] === 3
                             ? 1
-                            : temp[i][j] > 3;
+                            : 0; // temp[i][j] > 3;
             } else if (current[i][j] === 0 && temp[i][j] === 3) {
-                temp[i][j] = 1;
+                current[i][j] = 1;
             }
         }
     }
     
-    return temp;
+    return current;
 }
 
 
