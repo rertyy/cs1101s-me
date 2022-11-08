@@ -119,30 +119,36 @@ const factorial = n => n <= 1 ? 1 : n * factorial(n - 1);
 const fibo = n => n === 0 ? 0 : n === 1 ? 1 : fibo(n - 1) + fibo(n - 2);
 
 
-function combineSequences(xs, comb) {
-    let functions = xs;
-    
-    function helper(n) {
-        if (is_null(tail(functions))) {
-            return head(functions)(n);
-        } else {
-            const func = head(functions);
-            functions = tail(functions);
-            return comb(func(n), helper(n));
-        }
-    }
-    
-    return helper;
-}
-
-function combineSequences1(xs, comb) {
-    return accumulate(comb, head(xs), tail(xs));
-}
-
-const factorialPlusFibo = combineSequences1(
-		list(factorial, fibo),
-		(f, g) => (x => (f(x) + g(x)))
+const padovan = createSequence(
+    (f, n) => f(n - 2) + f(n - 3), list(1, 1, 1)
 );
+padovan(8); // returns 7
+
+
+// function combineSequences(xs, comb) {
+//     let functions = xs;
+    
+//     function helper(n) {
+//         if (is_null(tail(functions))) {
+//             return head(functions)(n);
+//         } else {
+//             const func = head(functions);
+//             functions = tail(functions);
+//             return comb(func(n), helper(n));
+//         }
+//     }
+    
+//     return helper;
+// }
+
+// function combineSequences1(xs, comb) {
+//     return accumulate(comb, head(xs), tail(xs));
+// }
+
+// const factorialPlusFibo = combineSequences1(
+// 		list(factorial, fibo),
+// 		(f, g) => (x => (f(x) + g(x)))
+// );
 
 
 
