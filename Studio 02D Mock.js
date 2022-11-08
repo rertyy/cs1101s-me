@@ -214,7 +214,11 @@ function get_next_state(current) {
             let sum = 0;
             for (let y = -1; y <= 1; y = y + 1) {
                 for (let x = -1; x <= 1; x = x + 1) {
+                    if (y === x && y === 0) { //centre
+                        continue;
+                    }
                     sum = sum + neighbour_checker(i + y, j + x);
+                    
                 }
             }
             temp[i][j] = sum;
