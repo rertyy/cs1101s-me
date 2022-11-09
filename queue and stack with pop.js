@@ -1,34 +1,34 @@
-// let queue = []; //FIFO
-// const SIZE = 5;
+let queue = []; //FIFO
+const SIZE = 5;
 
-// let head = 0; //FIFO
-// let tail = 0; //LILO
+let head = 0; //FIFO
+let tail = 0; //LILO
 
-// function enqueue(x) {
-//     let len = array_length(queue);
-//     if (len < 5) {
-//         queue[len] = x;
-//         tail = len;
-//         head = 0;
-//     } else {
-//         queue[head] = x;
-//         head = head > SIZE - 2 ? 0 : head + 1;
-//         tail = tail > SIZE - 2 ? 0 : tail + 1;
-//     }
-// }
+function enqueue(x) {
+    let len = array_length(queue);
+    if (len < 5) {
+        queue[len] = x;
+        tail = len;
+        head = 0;
+    } else {
+        queue[head] = x;
+        head = head > SIZE - 2 ? 0 : head + 1;
+        tail = tail > SIZE - 2 ? 0 : tail + 1;
+    }
+}
 
 
-// function dequeue(){
-//     queue[tail] = undefined;
-//     head = head > SIZE - 2 ? 0 : head + 1;
-//     tail = tail > SIZE - 2 ? 0 : tail + 1;
-// }
+function dequeue(){
+    queue[tail] = undefined;
+    head = head > SIZE - 2 ? 0 : head + 1;
+    tail = tail > SIZE - 2 ? 0 : tail + 1;
+}
 
-// function peek(){
-//     return queue[head];
-// }
+function peek(){
+    return queue[head];
+}
 
-// queue;
+queue;
 
 
 //Stack is just opposite of queue in head - 1;
