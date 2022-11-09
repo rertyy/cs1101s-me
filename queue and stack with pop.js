@@ -37,7 +37,7 @@ const SIZE = 5;
 let head = 0;
 let tail = 0;
 
-function enstack(x) {
+function push(x) {
     let len = array_length(stack);
     if (len < 5) {
         stack[len] = x;
@@ -50,7 +50,7 @@ function enstack(x) {
     }
 }
 
-function destack(){
+function pop(){
     stack[tail] = undefined;
     head = head - 1 < 0 ? SIZE - 1 : head - 1;
     tail = tail - 1 < 0 ? SIZE - 1 : tail - 1;
